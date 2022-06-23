@@ -1,1 +1,1 @@
-# A guide tour in shell permisions
+# A guide tour in shell permissions
