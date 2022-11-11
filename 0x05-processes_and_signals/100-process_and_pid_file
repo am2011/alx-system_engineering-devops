@@ -1,21 +1,12 @@
 #!/usr/bin/env bash
+# Run as root, echos pid into /var/run and traps then runs an infinite loop
 
-# Process and PID file
+echo $$ > /var/run/myscript.pid.pid
 
-fpath="/var/run/myscript.pid"
+trap "echo 'Y U no love me?!'; exit 0; rm /var/run/myscript.pid" SIGINT
+trap "echo 'I hate the kill command'; exit 0; rm /var/run/myscript.pid" SIGTERM
 
-echo $$ > /var/run/myscript.pid
-
-    trap 'echo "I hate the kill command"; rm -rf $fpath; exit 0' SIGTERM
-
-    trap 'echo "Y U no love me?!"' SIGINT
-
-    trap 'rm -rf $fpath; exit 0' SIGQUIT
-
-while true; do
-
-    echo "To infinity and beyond"
-
-    sleep 2
-
+while :; do
+	echo To infinity and beyond
+	sleep 2
 done
