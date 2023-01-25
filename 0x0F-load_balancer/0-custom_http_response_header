@@ -7,5 +7,6 @@ sudo ufw allow 'Nginx HTTP'
 echo 'Hello World!' > /var/www/html/index.nginx-debian.html
 # makes a backup copy of the default nginx configuration file.
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
-sudo sed -i '/listen 80 default_server;/a add_header X-Served-By $HOSTNAME;' /etc/nginx/sites-available/default
+sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+sudo sed -i "20i\        add_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
 sudo service nginx start
