@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# using what in task 1
+chmod 204 /etc/nginx/nginx.conf
+sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
+pkill apache2
+sudo -u nginx service nginx restart 
