@@ -1,6 +1,5 @@
 # fixes Apache 500 error
- exec { 'fix typo':
-   onlyif  => 'test -e /var/www/html/wp-settings.php',
-   command => "sed -i 's/phpp/php/' /var/www/html/wp-settings.php",
-   path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
- }
+exec {'typo error in /var/www/html/wp-settings.php file name':
+  path    => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ],
+  command => 'mv /var/www/html/wp-includes/class-wp-locale.php /var/www/html/wp-includes/class-wp-locale.phpp'
+}
