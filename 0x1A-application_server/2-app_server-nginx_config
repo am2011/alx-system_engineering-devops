@@ -54,7 +54,7 @@ add_header X-Served-By $HOSTNAME;
                 alias /data/web_static/current/;
         }
 
-        location /airbnb-onepage/ {
+        location /airbnb-onepage {
                 include proxy_params;
                 proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
         }
