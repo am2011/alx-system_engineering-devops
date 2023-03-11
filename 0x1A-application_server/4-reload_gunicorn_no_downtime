@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Get the process ID of the Gunicorn master process
+MASTER_PID=$(pgrep gunicorn)
+
+# Send a HUP signal to the master process to reload the workers gracefully
+kill -HUP $MASTER_PID
+
+# Wait for the workers to finish serving their current requests
+sleep 5
+
+# Send a TERM signal to the master process to stop it gracefully
+kill -TERM $MASTER_PID
