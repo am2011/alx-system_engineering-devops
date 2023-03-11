@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Get the process ID of the Gunicorn master process
 MASTER_PID=$(pgrep gunicorn)
 
